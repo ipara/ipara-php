@@ -13,8 +13,8 @@ include ("ThreeDPaymentCompleteRequest.php");
 
 $settings = new Settings();
 
-$settings->PublicKey = "SVD40N0BEHZVY4D"; //"Public Magaza Anahtarı",
-$settings->PrivateKey = "SVD40N0BEHZVY4D8L9GMQXMDU"; //"Private Magaza Anahtarı",
+$settings->PublicKey = ""; //"Public Magaza Anahtarı",
+$settings->PrivateKey = ""; //"Private Magaza Anahtarı",
 $settings->BaseUrl = "https://entegrasyon.ipara.com/3dgate";
 $settings->Version = "1.0";
 $settings->Mode = "T"; // Test -> T / Prod -> P
