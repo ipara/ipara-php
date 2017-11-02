@@ -47,11 +47,11 @@ $request->userId = $_POST["userId"];
 $request->cardId =  $_POST["cardId"];
 $request->clientIp=Helper::get_client_ip();
 $response=BankCardInquiryRequest::execute($request,$settings);
-
+$output = Helper::formattoJSONOutput($response);
 
 print "<h3>Sonuç:</h3>";
 echo "<pre>";
-echo htmlspecialchars($response); 
+echo htmlspecialchars($output); 
 echo "</pre>";
 
 
