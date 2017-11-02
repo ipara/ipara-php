@@ -179,19 +179,13 @@ include ("ThreeDPaymentInitRequest.php");
 	$request->PurchaserName = "Murat";
 	$request->PurchaserSurname = "Kaya";
 	$request->PurchaserEmail = "murat@kaya.com";
-	$request->SuccessUrl = getCurrentUrl () . "/success.php";
-	$request->FailUrl = getCurrentUrl () . "/fail.php";
+	$request->SuccessUrl = Helper::getCurrentUrl() . "/success.php";
+	$request->FailUrl = Helper::getCurrentUrl(). "/fail.php";
 	
 	$response = ThreeDPaymentInitRequest::execute ( $request, $settings );
 	print $response;
 	
 	?>
     <?php endif; ?>
-    
-	<?php
-	function getCurrentUrl() {
-		return $_SERVER ['REQUEST_SCHEME'] . '://' . $_SERVER ['SERVER_NAME'] . ":" . $_SERVER ['SERVER_PORT'];
-	}
-	?>
 
 <?php include('footer.php');?>
