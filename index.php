@@ -164,7 +164,7 @@ include ("ThreeDPaymentInitRequest.php");
 	
 	$request = new ThreeDPaymentInitRequest ();
 	$request->OrderId = Helper::Guid ();
-	$request->Echo = getCurrentUrl ();
+	$request->Echo = "echo";
 	$request->Mode = $settings->Mode;
 	$request->Version = $settings->Version;
 	$request->Amount = "10000"; // 100 tL
