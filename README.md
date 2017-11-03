@@ -1,11 +1,11 @@
 # iPara Php Kütüphanesi
 
-iPara PHP Client Kütüphanesidir. iPara API'lerine çok hızlı bir şekilde bağlanmanızı sağlayan bu projeyi indirip hızlıca inceliyebilirsiniz. 
+iPara PHP Client Kütüphanesidir. iPara API'lerine çok hızlı bir şekilde bağlanmanızı sağlayan bu projeyi indirip hızlıca inceleyebilirsiniz. 
 
 
 ## Kullanım
 
-[iPara geliştirici merkezine](http://dev.ipara.com.tr) üye olmalısınız. Üye olduktan sonra private key ve public key e ihtiyacınız olacak. Bunlar sizinle iPara tarafından paylaşıldıktan sonra bunları settings.php dosyasında belirtilmiş yerlere yazmalısınız.
+iPara servislerini kullanabilmek için [iPara'ya](https://www.ipara.com.tr) üye olmalısınız. Üye olduktan sonra iPara sizinle private ve public keylerinizi paylaşacaktır. Paylaşılan bu anahtarları kendi projenizde ilgili yerlere yazarak saklamanız ve kullanmanız gerekmektedir.
 
 ## Önemli Notlar
 
