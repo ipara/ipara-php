@@ -11,12 +11,16 @@ iPara servislerini kullanabilmek için [iPara'ya](https://www.ipara.com.tr) üye
 
 Örnek projelerimizi daha iyi anlamak için [iPara geliştirici merkezini](http://dev.ipara.com.tr) takip etmeniz büyük önem arz etmektedir. 
 
-İlgili örnek proje bir Php Web projesi barındırır. İlgili örneği kendi private key ve public key'inizle birlikte test ederek kullanabilirsiniz. Sonrasında benzer yapıları kendi projenizde referans alarak ilerleyebilirsiniz. Örnek datalardaki değişkenleri kendi projenizdeki gerçek verilerle set etmeyi unutmayınız. 
+İlgili örnek proje bir Php Web projesi barındırır. İlgili örneği kendi private key ve public key'inizle birlikte test ederek kullanabilirsiniz. Sonrasında benzer yapıları kendi projenizde referans alarak ilerleyebilirsiniz. Örnek datalardaki değişkenleri kendi projenizdeki gerçek verilerle set etmeyi unutmayınız.
 
 * Servisleri kullanabilmek için iPara kurum başvuru aşamalarını tamamlamış olmanız gerekmektedir. Başvuru adımlarını tamamladıktan sonra kurum panelinizden alabileceğiniz public ve private key bilgileri ile servisleri kullanabilirsiniz.
 * Entegrasyon işlemlerinde encoding “UTF-8” kullanılması gerekmektedir. Özellikle token parametresinden kaynaklı alınan hataların büyük çoğunluğu encoding problemlerinden kaynaklanmaktadır. Ek olarak XML dili için olan özel karakterlerin gönderiminde hata almamak için yine encoding yapılması gerekmektedir.
 * Servis isteği yaparaken göndermiş olduğunuz alanların başında ve sonunda oluşabilecek boşluk alanlarını kaldırmanızı ( trim() ) önemle rica ederiz. Çünkü bu alanlar oluşacak hash sonuçlarını etkilemektedir.
 * Entegrasyon dahilinde gönderilen input alanlarında, kart numarası alanı dışında kart numarası bilgisi gönderilmesi halinde işlem reddedilecektir.
+
+## Önemli Uyarı:
+
+iPara örnek projelerinin amacı, yazılım geliştiricilere iPara servislerine entegre olabilecek bir proje örneği sunmak ve entegrasyon adımlarının daha iyi anlaşılmasını sağlamaktır. Projeleri doğrudan canlı ortamınıza alarak kod değişimi yapmadan kullanmanız için desteğimiz bulunmamaktadır. **Projeyi bir eğitsel kaynak (tutorial) olarak kullanınız.**
 
 ## Test Kartları
 
@@ -53,10 +57,11 @@ Her örnek projenin Helper sınıfı içinde hash hesaplama ile alakalı bir fon
 ## Canlı Ortama Geçiş 
 
 * Test ortamında kullandığınız statik verilerin canlı ortamda gerçek müşteri datasıyla değiştirildiğinden emin olun.
-Canlı ortamda yanlış, sabit data gönderilmediğinden emin olun. Gönderdiğiniz işlemlere ait verileri mutlaka size özel panelden görüntüleyin.
+* Canlı ortamda yanlış, sabit data gönderilmediğinden emin olun. Gönderdiğiniz işlemlere ait verileri mutlaka size özel panelden görüntüleyin.
 * Geliştirmeler tamamlandıktan sonra ödeme adımlarını, iPara test kartları ile tüm olası durumlar için test edin ve sonuçlarını görüntüleyin.
-* iPara servislerinden dönen ve olabilecek tüm hataları karşılayacak ve müşteriye uygun cevabı gösterecek şekilde kodunuzu düzenleyin ve test edin. iPara hata kodları kullanıcı dostu mesajlar olup müşterinize gösterebilirsiniz.
+* iPara servislerinden dönen ve olabilecek tüm hataları karşılayacak ve müşteriye uygun cevabı gösterecek şekilde kodunuzu düzenleyin ve test edin.
+* iPara hata kodları kullanıcı dostu mesajlar olup müşterinize gösterebilirsiniz.
 * Hassas olmayan verileri ve servis yanıtlarını, hata çözümü ve olası sorunların çözümünde yardımcı olması açısından loglamaya dikkat edin.
-* Canlı ortama geçiş sonrası ilk işlemleri kendi kredi kartlarınız ile deneyerek sonuçlarını size özel Kurum ekranlarından görüntüleyin. Sonuçların ve işlemlerin doğru tamamlandığından emin olun.
+* Canlı ortama geçiş sonrası ilk işlemleri kendi kredi kartlarınız ile deneyerek sonuçlarını size özel kurum ekranlarından görüntüleyin. Sonuçların ve işlemlerin doğru tamamlandığından emin olun.
 
 Sorularınız olması durumunda bize [Destek](http://dev.ipara.com.tr/Home/Support) üzerinden yazabilirsiniz. 
