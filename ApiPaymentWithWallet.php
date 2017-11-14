@@ -120,6 +120,12 @@
 
 <?php if (!empty($_POST)): ?>
 <?php
+
+	/*
+	 *	Cüzdandaki kart ile ödeme servisi
+	 *	setting ayarlarımızı alıp, ApiPaymentRequest alanlarını formdan gelen verilere göre doldurup post edildiği kısımdır.
+	*/
+	
 	$settings = new Settings ();
 	
 	$request = new ApiPaymentRequest ();
@@ -195,8 +201,8 @@
 	
 	// endregion
 	
-	$response = ApiPaymentRequest::execute ( $request, $settings );
-	$output = Helper::formattoXMLOutput($response);
+	$response = ApiPaymentRequest::execute ( $request, $settings ); //Cüzdandaki kart ile ödeme servis çağrısını temsil eder.
+	$output = Helper::formattoXMLOutput($response);//Cüzdandaki kart ile ödeme servis çıktı parametrelerini ekranda göstermemize olanak sağlar.
 	
 	print "<h3>Sonuç:</h3>";
 	echo "<pre>";

@@ -1,11 +1,31 @@
 <?php
 class Helper {
+	/*
+	
+	*	Doğru formatta tarih döndüren yardımcı sınıftır. Isteklerde tarih istenen noktalarda bu fonksiyon sonucu kullanılır. 
+    *   Servis çağrılarında kullanılacak istek zamanı için istenen tarih formatında bu fonksiyon kullanılmalıdır.
+    *    Bu fonksiyon verdiğimiz tarih değerini iPara'nın bizden beklemiş olduğu tarih formatına değiştirmektedir.
+	
+	*/
 	public static function GetTransactionDateString() {
 		return date ( "Y-m-d H:i:s" ); // "2017-03-21 16:26:54
 	}
+	
+	/*
+	*	Çağrılarda kullanılacak Tokenları oluşturan yardımcı metotdur. 
+	*	İstek güvenlik bilgisi kullanılacak tüm çağrılarda token oluşturmamız gerekmektedir.	
+	*	Token oluştururken hash bilgisi ve public key alanlarının parametre olarak gönderilmesi gerekmektedir.	
+	*	hashstring alanı servise ait birden fazla alanın birleşmesi sonucu oluşan verileri ve public key mağaza açık anahtarını 
+	*	kullanarak bizlere token üretmemizi sağlar.
+	*/
 	public static function CreateToken($publicKey, $hashString) {
 		return $publicKey . ":" . base64_encode ( sha1 ( $hashString, true ) );
 	}
+	
+	/*
+	*	3D akışının ilk adımında yapılan işlemin ardından gelen cevabın doğrulanması adına kullanılacak
+	*	fonksiyondur. 
+	*/
 	public static function Validate3DReturn(ThreeDPaymentInitResponse $paymentResponse, Settings $settings) {
 		if (! isset ( $paymentResponse->Hash ) || trim ( $paymentResponse->Hash ) === '') {
 			$error = "Ödeme cevabı hash bilgisi boş. [result : " . $paymentResponse->Result . ",error_code : " . $paymentResponse->ErrorCode . ",error_message : " . $paymentResponse->ErrorMessage . "]";
@@ -21,6 +41,7 @@ class Helper {
 		}
 		return true;
 	}
+	//Bir çok çağrıda kullanılan HTTP Header bilgilerini otomatik olarak ekleyen fonksiyondur.
 	public static function GetHttpHeaders(Settings $settings, $acceptType) {
 		$header = array (
 				"Accept:" . $acceptType,
@@ -32,6 +53,7 @@ class Helper {
 		
 		return $header;
 	}
+	//Guid oluşturmak için kullanılan metottur.
 	public static function GUID() {
 		if (function_exists ( 'com_create_guid' ) === true) {
 			return trim ( com_create_guid (), '{}' );
@@ -39,6 +61,7 @@ class Helper {
 		
 		return sprintf ( '%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand ( 0, 65535 ), mt_rand ( 0, 65535 ), mt_rand ( 0, 65535 ), mt_rand ( 16384, 20479 ), mt_rand ( 32768, 49151 ), mt_rand ( 0, 65535 ), mt_rand ( 0, 65535 ), mt_rand ( 0, 65535 ) );
 	}
+	//Client ipsine ulaşmamızı sağlayan kısımdır.
 	public static function get_client_ip() {
 		if (getenv ( 'HTTP_CLIENT_IP' ))
 			$ipaddress = getenv ( 'HTTP_CLIENT_IP' );
@@ -59,10 +82,7 @@ class Helper {
 	}
 	
 	/**
-	 * Generates the current URL path.
-	 * This can be used to automatically generate redirection URL's for local environments.
-	 * Beware while using in production environments since the method can create faulty URL paths
-	 *
+	 * Geçerli url yolunu üretir.
 	 * @method "request scheme" + "://" + "server name" + "server port"
 	 * @return string
 	 */
@@ -71,10 +91,7 @@ class Helper {
 	}
 	
 	/**
-	 * Formats the xml input to a pretty printed version
-	 *
-	 * @param unknown $input_xml Unformatted XML text
-	 * @return string Pretty printed XML Text
+	 * Xml çıktısı oluşturmamıza olanak sağlayan metod
 	 */
 	public static function formattoXMLOutput($input_xml) {
 		$doc = new DOMDocument ();
@@ -86,14 +103,8 @@ class Helper {
 	}
 	
 	/**
-	 * Note: Borrowed code
-	 * <br>
-	 * Indents a flat JSON string to make it more human-readable.
-	 *
-	 * @param string $input_json
-	 *        	The original JSON string to process.
-	 * @return string Indented version of the original JSON string.
-	 * @link https://www.daveperrett.com/articles/2008/03/11/format-json-with-php/
+	 * Okunabilir düz bir JSON dizesini oluşturur.	
+
 	 */
 	public static function formattoJSONOutput($input_json) {
 		$result = '';

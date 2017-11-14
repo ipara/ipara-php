@@ -1,6 +1,9 @@
 <?php
 
-
+ /*
+  *   Bu sınıf cüzdana kart ekleme servisi isteği sonucunda ve cüzdandaki kartları getir isteği sonucunda bize döndürülen 
+  *   alanları temsil etmektedir. 
+ */
 
 class BankCard 
 {

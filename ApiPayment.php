@@ -146,6 +146,12 @@
 
 <?php if (!empty($_POST)): ?>
 <?php
+
+/*
+ *3D secure olmadan ödeme işlemleri için gerekli olan parametrelerin doldurulduğu kısımdır.
+ *setting ayarlarımızı alıp, ApiPaymentRequest alanlarının formdan gelen verilere göre doldurup post edildiği kısımdır.
+ *Post işlemi sonucunda oluşan sonucu ekranda gösteriyoruz.
+*/
 	$settings = new Settings ();
 	
 	$request = new ApiPaymentRequest ();
@@ -218,9 +224,8 @@
 	
 	// endregion
 	
-	$response = ApiPaymentRequest::execute ( $request, $settings );
-	$output = Helper::formattoXMLOutput($response);
-
+	$response = ApiPaymentRequest::execute ( $request, $settings ); // 3D secure olmadan ödeme yapma servis çağrısının yapıldığı kısımdır.
+	$output = Helper::formattoXMLOutput($response); //3D secure sonucu servis çıktı parametrelerinin ekrana yansıtıldığı kısımdır.
 	print "<h3>Sonuç:</h3>";
 	echo "<pre>";
 	echo htmlspecialchars($output);

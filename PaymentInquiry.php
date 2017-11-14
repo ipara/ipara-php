@@ -32,14 +32,19 @@
 
 <?php if (!empty($_POST)): ?>
 <?php
+	/*
+	*	Setting ayarlarımızı alıyoruz.
+	*	Formdan gelen bilgilerle PaymentInquiryRequest sınıfımızı dolduruyoruz
+	*	PaymentInquiryRequest ve Setting ayarlarımızla sayfamızı post ediyoruz.
+	*/
 	$settings = new Settings ();
 	
 	$request = new PaymentInquiryRequest ();
 	$request->orderId = $_POST ["orderId"];
 	$request->Echo = "Echo";
 	$request->Mode = settings . Mode;
-	$response = PaymentInquiryRequest::execute ( $request, $settings );
-	$output = Helper::formattoXMLOutput ( $response );
+	$response = PaymentInquiryRequest::execute ( $request, $settings ); // Ödeme sorgulama servisi başlatılması için gerekli servis çağırısını temsil eder.
+	$output = Helper::formattoXMLOutput ( $response ); //Ödeme sorgulama servisi istek çağrısı sonucunda servis çıktı parametrelerinin ekranda gösterildiği kısımdır. 
 	
 	print "<h3>Sonuç:</h3>";
 	echo "<pre>";

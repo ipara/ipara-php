@@ -182,7 +182,7 @@ include ("ThreeDPaymentInitRequest.php");
 	$request->SuccessUrl = Helper::getCurrentUrl() . "/success.php";
 	$request->FailUrl = Helper::getCurrentUrl(). "/fail.php";
 	
-	$response = ThreeDPaymentInitRequest::execute ( $request, $settings );
+	$response = ThreeDPaymentInitRequest::execute ( $request, $settings ); // 3D secure ödeme başlatmamıza olanak sağlar.
 	print $response;
 	
 	?>

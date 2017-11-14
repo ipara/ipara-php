@@ -60,6 +60,13 @@
 
 <?php if (!empty($_POST)): ?>
 <?php 
+
+	/*
+	 * Cüzdana kart ekleme servisi için gerekli olan parametrelerin doldurulduğu kısımdır.
+	 * setting ayarlarımızı alıp BankCardCreateRequest alanlarının formdan gelen verilere göre doldurulup post edildiği kısımdır. 
+	*/
+		
+	
 $settings = new Settings();
 
 
@@ -71,8 +78,8 @@ $request->cardAlias =$_POST["cardAlias"];
 $request->cardExpireMonth  =$_POST["month"];
 $request->cardExpireYear  =$_POST["year"];
 $request->clientIp=Helper::get_client_ip();
-$response=BankCardCreateRequest::execute($request,$settings);
-$output = Helper::formattoJSONOutput($response);
+$response=BankCardCreateRequest::execute($request,$settings); //Cüzdana kart ekleme servisi için istek çağrısının yapıldığı kısımdır.
+$output = Helper::formattoJSONOutput($response); //Cüzdana kart eklemesi sonucu oluşan servis çıktı parametrelerini ekrana yazdırmaya olanak sağlayan kısımdır.
 
 print "<h3>Sonuç:</h3>";
 echo "<pre>";

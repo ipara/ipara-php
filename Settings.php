@@ -2,7 +2,12 @@
  
 
 
-
+/*
+Tüm çağrılarda kullanılacak ayarların tutulduğu sınıftır. 
+Bu sınıf üzerinde size özel parametreler fonksiyonlar arasında taşınabilir.
+Bu sınıf üzerinde tüm sistemde kullanacağımız ayarları tutar ve bunlara göre işlem yaparız.
+Bu sınıf örnek projemizde BaseController içerisinde kullanılmıştır. Ve tüm ayarların kullanılacağı yerde karşımıza çıkmaktadır.
+*/   
     class Settings
     {      
      

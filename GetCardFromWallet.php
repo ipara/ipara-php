@@ -41,13 +41,18 @@
 <?php 
 $settings = new Settings();
 
-
+	/*
+	*   Cüzdandaki kartları listelemek için kullanıclan sayfadır.
+	*	Setting ayarlarımızı alıyoruz.
+	*	Formdan gelen bilgilerle BankCardInquiryRequest sınıfımızı dolduruyoruz
+	*	BankCardInquiryRequest ve Setting ayarlarımızla sayfamızı post ediyoruz.
+	*/
 $request = new BankCardInquiryRequest();
 $request->userId = $_POST["userId"];
 $request->cardId =  $_POST["cardId"];
 $request->clientIp=Helper::get_client_ip();
-$response=BankCardInquiryRequest::execute($request,$settings);
-$output = Helper::formattoJSONOutput($response);
+$response=BankCardInquiryRequest::execute($request,$settings); // Cüzdandaki kartları listelemek için servis çağrısının yapıldığı kısımdır.
+$output = Helper::formattoJSONOutput($response);//Cüzdandaki ekranları listeleme için yapılan çağrı sonucu oluşan servis çıktı parametrelerinin ekranda göstermemize olanak sağlandığı kısımdır.
 
 print "<h3>Sonuç:</h3>";
 echo "<pre>";

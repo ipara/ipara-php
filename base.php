@@ -1,6 +1,10 @@
 <?php
 
-
+	/*
+	 *	Tüm request ve response sınıflarındaki ortak alanları içermektedir.
+	 *	Tüm Request ve response Sınıflarında zorunlu olarak kullanılacak alanları temsil eder.
+	 *	Ortak alanları tekrar tekrar kullanmak yerine bu sınıftan kalıtım alarak kullanım sağlanır.
+	*/
 
 
 class  Base

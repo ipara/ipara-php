@@ -7,6 +7,7 @@
 
 class ThreeDPaymentCompleteRequest extends  BaseRequest
 {
+	//3D Secure ile ödeme 2. Adımında gerekli olan 3D servis girdi parametrelerini temsil eder.
     public $ThreeD;
     public $OrderId;
     public $Amount;
@@ -24,7 +25,11 @@ class ThreeDPaymentCompleteRequest extends  BaseRequest
     public $Purchaser;
     
 
-   
+   /*
+	* 3D Secure 2. Adımında ödeme onayı sağlanarak tahsilat gerçekleştirilmesi için gerekli olan servis isteğini temsil eder.
+	* @$request Ödeme Onayı sağlamak için gerekli olan girdilerin olduğu sınıfı temsil eder.
+	* @$settings Kullanıcıya özel olarak belirlenen ayarları temsil eder.
+   */
     public static function execute(ThreeDPaymentCompleteRequest $request, Settings $settings)
     {
           $settings->transactionDate = Helper::GetTransactionDateString();
@@ -32,6 +37,7 @@ class ThreeDPaymentCompleteRequest extends  BaseRequest
            return  restHttpCaller::post($settings->BaseUrl . "rest/payment/auth", Helper::GetHttpHeaders($settings, "application/xml"), $request->toXmlString());
     }
 
+	//Servis çıktısının Xml formatında çıkmasını sağlar
     public function toXmlString()
     {
         $xml_data_product_part = "";

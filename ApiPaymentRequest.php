@@ -3,6 +3,8 @@
 
 
 
+	//Müşteri bilgilerinin bulunduğı sınıfı temsil eder.
+
 class Purchaser{
     public $Name;
     public $Surname;
@@ -15,6 +17,7 @@ class Purchaser{
     public $ShippingAddress;
 
   }
+	//Müşteri adresi bilgilerinin bulunduğı sınıfı temsil eder.
 
     class PurchaserAddress{
         
@@ -30,6 +33,9 @@ class Purchaser{
         public $CompanyName;
         public $PhoneNumber;
     }
+
+	
+	//Ürün bilgilerinin bulunduğu sınıfı temsil eder.
 
     class Product{
                 public $Code; 
@@ -62,14 +68,16 @@ class ApiPaymentRequest extends  BaseRequest
     public $Purchaser;
     
 
-   
+   //3D Secure Olmadan Ödeme Servis çağrısını temsil eder.
+  
     public static function execute(ApiPaymentRequest $request, Settings $settings)
     {
           $settings->transactionDate = Helper::GetTransactionDateString();
           $settings->HashString = $settings->PrivateKey . $request->OrderId . $request->Amount . $request->Mode . $request->CardOwnerName . $request->CardNumber . $request->CardExpireMonth . $request->CardExpireYear . $request->Cvc . $request->UserId . $request->CardId. $request->Purchaser->Name . $request->Purchaser->SurName . $request->Purchaser->Email . $settings->transactionDate;
            return  restHttpCaller::post($settings->BaseUrl . "rest/payment/auth", Helper::GetHttpHeaders($settings, "application/xml"), $request->toXmlString());
     }
-
+	//3D olmadan ödeme sonucunun xml olarak ekrana yazdırılmasını sağlar.
+	
     public function toXmlString()
     {
         $xml_data_product_part = "";

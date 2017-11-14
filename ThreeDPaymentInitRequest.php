@@ -3,6 +3,7 @@
 // include ("base.php");
 // include ("restHttpCaller.php");
 class ThreeDPaymentInitRequest extends BaseRequest {
+	//3D Ödeme Formu başlatmak için gerekli olan servis girdi parametrelerini temsil eder.
 	public $OrderId;
 	public $Amount;
 	public $UserId;
@@ -21,6 +22,12 @@ class ThreeDPaymentInitRequest extends BaseRequest {
 	public $Version;
 	public $TransactionDate;
 	public $Token;
+	
+	/*
+	 *	Diğer fonksiyonların aksine 3D Sınıfı bir formun post edilmesi ile başlar 
+	 *  bu sebeble bu fonksiyon ilgili HTML formu oluşturur ve geri döndürür.
+	 *  Bu formu mevcut formun üzerine yazmak ilgili formun Javascript ile post edilmesini sağlar. 
+	*/
 	public static function execute(ThreeDPaymentInitRequest $request, Settings $settings) {
 		$settings->transactionDate = Helper::GetTransactionDateString ();
 		$request->TransactionDate = $settings->transactionDate;

@@ -33,12 +33,17 @@
 
 <?php if (!empty($_POST)): ?>
 <?php
+	/*
+	*	Setting ayarlarımızı alıyoruz.
+	*	Bin numarası Kredi Kartının üzerindeki ilk 6 hanedir.
+	*	Formdan gelen bilgi ile bin numarasını ve Setting ayarlarımızı post ediyoruz.
+	*/
 	$settings = new Settings ();
 	
 	$request = new BinNumberInquiryRequest ();
 	$request->binNumber = $_POST ["binNumber"];
-	$response = BinNumberInquiryRequest::execute ( $request, $settings );
-	$output = Helper::formattoJSONOutput( $response );
+	$response = BinNumberInquiryRequest::execute ( $request, $settings ); // Bin sorgulama servisinin başlatıldığı kısım
+	$output = Helper::formattoJSONOutput( $response );  //bin sorgulama servisi sonucunda oluşan servis çıktı parametrelerinin gösterildiği kısım.
 	
 	print "<h3>Sonuç:</h3>";
 	echo "<pre>";

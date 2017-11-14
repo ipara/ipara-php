@@ -1,8 +1,10 @@
 <?php
 class BinNumberInquiryRequest extends  BaseRequest
 {
+	//Bin Sorgulama servisleri içerisinde kullanılacak olan bin numarasını temsil eder.
     public $binNumber;
    
+   // Türkiye genelinde tanımlı olan tüm yerli kartlara ait BIN numaraları için sorgulama yapılmasına izin veren servisi temsil eder. 
     public static function execute(BinNumberInquiryRequest $request, Settings $settings)
     {
         $settings->transactionDate = Helper::GetTransactionDateString();
@@ -11,6 +13,9 @@ class BinNumberInquiryRequest extends  BaseRequest
 
         }
 
+	/*
+	*	Servis çıktı parametrelerinin json olarak ekranda gösterilmesini sağlar
+	*/
     public function toJsonString()
     {
         

@@ -5,7 +5,9 @@ class restHttpCaller
     private $curl;
 
 
-
+	/*
+	 * Http çağırısı başlatmak için kullanılan metoddur. Http isteği yapılmasını sağlar.
+	*/
     public static function get($url)
     {
         $ch = curl_init($url);

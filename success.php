@@ -9,6 +9,15 @@ include ("ThreeDPaymentCompleteRequest.php");
 ini_set('display_errors',1); 
 error_reporting(E_ALL );
 
+
+/*
+ * 	3D Secure işleminin 2. adımında 1. adımda bizlere post edilen dataları alıyoruz.
+ *	Bu dataları settings ayarlarımızla birlikte Validate3DReturn metoduna post ediyoruz. 
+ *  ThreeDPaymentCompleteRequest sınıfımıza ürün,sipariş ve müşteri bilgilerimizle post ediyoruz.
+ * Eğer işlem başarılı ise başarılı mesajını ekranda gösteriyoruz.
+ * Başarılı değilse fail.php sayfasına gönderiyoruz.
+*/
+
 $settings = new Settings();
 
 
@@ -26,10 +35,6 @@ $paymentResponse->Hash= $_POST['hash'];
 
 if (Helper::Validate3DReturn($paymentResponse, $settings))
 {
-    
-
-
-
 $request = new ThreeDPaymentCompleteRequest();
 $request->OrderId = $_POST['orderId'];
 $request->Echo = "Echo";
@@ -99,7 +104,7 @@ $request->Products[1]=$p;
 #endregion
 
 
-$response=ThreeDPaymentCompleteRequest::execute($request,$settings);
+$response=ThreeDPaymentCompleteRequest::execute($request,$settings); //3D secure 2. adımının başlatılması için gerekli servis çağrısını temsil eder.
 print "<h1>3D Ödeme Başarılı</h1>";
 
 print "<h3>Sonuç:</h3>";
