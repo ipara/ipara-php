@@ -29,6 +29,7 @@ class ThreeDPaymentInitRequest extends BaseRequest {
 	 *  Bu formu mevcut formun üzerine yazmak ilgili formun Javascript ile post edilmesini sağlar. 
 	*/
 	public static function execute(ThreeDPaymentInitRequest $request, Settings $settings) {
+	    $settings->BaseUrl = "https://www.ipara.com/3dgate"; // 3D işleminin ilk adımında post adresi diğer tüm işlemlerin aksine değişkenlik gösterir.
 		$settings->transactionDate = Helper::GetTransactionDateString ();
 		$request->TransactionDate = $settings->transactionDate;
 		$settings->HashString = $settings->PrivateKey . $request->OrderId . $request->Amount . $request->Mode . $request->CardOwnerName . $request->CardNumber . $request->CardExpireMonth . $request->CardExpireYear . $request->Cvc . $request->UserId . $request->CardId . $request->PurchaserName . $request->PurchaserSurname . $request->PurchaserEmail . $settings->transactionDate;

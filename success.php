@@ -109,7 +109,7 @@ print "<h1>3D Ödeme Başarılı</h1>";
 
 print "<h3>Sonuç:</h3>";
 echo ("<pre>");
-print(htmlentities($response));
+print(htmlentities(Helper::formattoXMLOutput($response)));
 echo ("</pre>");
 }
 else 

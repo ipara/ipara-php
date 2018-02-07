@@ -154,14 +154,6 @@ include ("ThreeDPaymentInitRequest.php");
 <?php
 	$settings = new Settings ();
 	
-	$settings->PublicKey = ""; // "Public Magaza Anahtarı - size mağaza başvurunuz sonucunda gönderilen publik key (açık anahtar) bilgisini kullanınız.",
-	$settings->PrivateKey = ""; // "Private Magaza Anahtarı - size mağaza başvurunuz sonucunda gönderilen privaye key (gizli anahtar) bilgisini kullanınız.",
-	
-	$settings->BaseUrl = "https://www.ipara.com/3dgate"; // 3D işleminin ilk adımında post adresi diğer tüm işlemlerin aksine değişkenlik gösterir.
-	$settings->Version = "1.0"; // Kullandığınız iPara API versiyonudur.
-	$settings->Mode = "T"; // Test -> T, entegrasyon testlerinin sırasında "T" modunu, canlı sisteme entegre olarak ödeme almaya başlamak için ise Prod -> "P" modunu kullanınız.
-	$settings->HashString = ""; // Kullanacağınız hash bilgisini, bağlanmak istediğiniz web servis bilgisine göre doldurulmalıdır. Bu bilgileri Entegrasyon rehberinin ilgili web servise ait bölümde bulabilirsiniz.
-	
 	$request = new ThreeDPaymentInitRequest ();
 	$request->OrderId = Helper::Guid ();
 	$request->Echo = "echo";
