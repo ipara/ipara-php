@@ -18,8 +18,8 @@ include ("PaymentInquiryRequest.php");
 <html>
     <head>
           <title>iPara Developer Portal</title>
-        <link href="../Content/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="../Content/Site.css" rel="stylesheet" type="text/css"/>
+        <link href="Content/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="Content/Site.css" rel="stylesheet" type="text/css"/>
         
     </head>
 
@@ -36,7 +36,7 @@ include ("PaymentInquiryRequest.php");
             </div>
             <div class="navbar-collapse collapse">
 
-                <img src="../Content/iPara_disi-01.png" width="100" height="100" />
+                <img src="Content/iPara_disi-01.png" width="100" height="100" />
                 <ul class="nav navbar-nav">
                    <li><a href="index.php">3d Ödeme</a></li>
                    <li><a href="ApiPayment.php">(Non-3d) Ödeme</a></li>
