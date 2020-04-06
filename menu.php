@@ -2,7 +2,7 @@
 ini_set('display_errors',1); 
 error_reporting(E_ERROR );
 
-include ("settings.php");
+include ("Settings.php");
 include ("helper.php");
 include ("base.php");
 include ("restHttpCaller.php");
