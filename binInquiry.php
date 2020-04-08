@@ -1,5 +1,3 @@
-
-
 <?php include('menu.php');?>
 
 <form action="" method="post" class="form-horizontal">
@@ -31,8 +29,8 @@
 
 <br />
 
-<?php if (!empty($_POST)): ?>
 <?php
+if (!empty($_POST)) {
 	/*
 	*	Setting ayarlarımızı alıyoruz.
 	*	Bin numarası Kredi Kartının üzerindeki ilk 6 hanedir.
@@ -43,15 +41,13 @@
 	$request = new BinNumberInquiryRequest ();
 	$request->binNumber = $_POST ["binNumber"];
 	$response = BinNumberInquiryRequest::execute ( $request, $settings ); // Bin sorgulama servisinin başlatıldığı kısım
+
 	$output = Helper::formattoJSONOutput( $response );  //bin sorgulama servisi sonucunda oluşan servis çıktı parametrelerinin gösterildiği kısım.
 	
 	print "<h3>Sonuç:</h3>";
 	echo "<pre>";
 	echo htmlspecialchars ($output);
 	echo "</pre>";
-	
-	?>
-    <?php endif; ?>
+}
 
-
-<?php include('footer.php');?>
+include('footer.php');
