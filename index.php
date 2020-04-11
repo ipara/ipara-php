@@ -86,7 +86,7 @@ include ("ThreeDPaymentInitRequest.php");
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="">Kart Sahibi Adı Soyadı:</label>
 			<div class="col-md-4">
-				<input value="Fatih Coskun" name="nameSurname"
+				<input value="Kart Sahibi Ad Soyad" name="nameSurname"
 					class="form-control input-md">
 
 			</div>
@@ -94,7 +94,7 @@ include ("ThreeDPaymentInitRequest.php");
 		<div class="form-group">
 			<label class="col-md-4 control-label" for=""> Kart Numarası:</label>
 			<div class="col-md-4">
-				<input value="4282209027132016" name="cardNumber"
+				<input value="5456165456165454" name="cardNumber"
 					class="form-control input-md">
 
 			</div>
@@ -104,8 +104,8 @@ include ("ThreeDPaymentInitRequest.php");
 			<label class="col-md-4 control-label" for=""> Son Kullanma Tarihi
 				Ay/Yıl: </label>
 			<div class="col-md-4">
-				<input value="05" name="month" class="form-control input-md"
-					width="50px"> <input value="18" name="year"
+				<input value="12" name="month" class="form-control input-md"
+					width="50px"> <input value="24" name="year"
 					class="form-control input-md" width="50px">
 
 			</div>
@@ -150,34 +150,32 @@ include ("ThreeDPaymentInitRequest.php");
 </form>
 
 
-<?php if (!empty($_POST)): ?>
 <?php
-	$settings = new Settings ();
-	
-	$request = new ThreeDPaymentInitRequest ();
-	$request->OrderId = Helper::Guid ();
-	$request->Echo = "echo";
-	$request->Mode = $settings->Mode;
-	$request->Version = $settings->Version;
-	$request->Amount = "10000"; // 100 tL
-	$request->CardOwnerName = $_POST ["nameSurname"];
-	$request->CardNumber = $_POST ["cardNumber"];
-	$request->CardExpireMonth = $_POST ["month"];
-	$request->CardExpireYear = $_POST ["year"];
-	$request->Installment = $_POST ["installment"];
-	$request->Cvc = $_POST ["cvc"];
-	$request->ThreeD = "true";
-	
-	$request->PurchaserName = "Murat";
-	$request->PurchaserSurname = "Kaya";
-	$request->PurchaserEmail = "murat@kaya.com";
-	$request->SuccessUrl = Helper::getCurrentUrl() . "/success.php";
-	$request->FailUrl = Helper::getCurrentUrl(). "/fail.php";
-	
-	$response = ThreeDPaymentInitRequest::execute ( $request, $settings ); // 3D secure ödeme başlatmamıza olanak sağlar.
-	print $response;
-	
-	?>
-    <?php endif; ?>
+if (!empty($_POST)) {
+    $settings = new Settings ();
 
-<?php include('footer.php');?>
+    $request = new ThreeDPaymentInitRequest ();
+    $request->OrderId = Helper::Guid();
+    $request->Echo = "echo";
+    $request->Mode = $settings->Mode;
+    $request->Version = $settings->Version;
+    $request->Amount = "10000"; // 100 tL
+    $request->CardOwnerName = $_POST ["nameSurname"];
+    $request->CardNumber = $_POST ["cardNumber"];
+    $request->CardExpireMonth = $_POST ["month"];
+    $request->CardExpireYear = $_POST ["year"];
+    $request->Installment = $_POST ["installment"];
+    $request->Cvc = $_POST ["cvc"];
+    $request->ThreeD = "true";
+
+    $request->PurchaserName = "Murat";
+    $request->PurchaserSurname = "Kaya";
+    $request->PurchaserEmail = "murat@kaya.com";
+    $request->SuccessUrl = Helper::getCurrentUrl() . "/ipara-php/success.php";
+    $request->FailUrl = Helper::getCurrentUrl() . "/ipara-php/fail.php";
+
+    $response = ThreeDPaymentInitRequest::execute($request, $settings); // 3D secure ödeme başlatmamıza olanak sağlar.
+    print $response;
+}
+
+include('footer.php');
