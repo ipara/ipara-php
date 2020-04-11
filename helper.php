@@ -87,7 +87,7 @@ class Helper {
 	 * @return string
 	 */
 	public static function getCurrentUrl() {
-		return $_SERVER ['REQUEST_SCHEME'] . '://' . $_SERVER ['SERVER_NAME'] . ":" . $_SERVER ['SERVER_PORT'];
+		return  (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https" : "http" . '://' . $_SERVER ['SERVER_NAME'] . ":" . $_SERVER ['SERVER_PORT'];
 	}
 	
 	/**
