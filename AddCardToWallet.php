@@ -58,20 +58,18 @@
 
 
 
-<?php if (!empty($_POST)): ?>
-<?php 
+<?php
+if (!empty($_POST)):
 
-	/*
-	 * Cüzdana kart ekleme servisi için gerekli olan parametrelerin doldurulduğu kısımdır.
-	 * setting ayarlarımızı alıp BankCardCreateRequest alanlarının formdan gelen verilere göre doldurulup post edildiği kısımdır. 
-	*/
-		
-	
+    /*
+ * Cüzdana kart ekleme servisi için gerekli olan parametrelerin doldurulduğu kısımdır.
+ * setting ayarlarımızı alıp BankCardCreateRequest alanlarının formdan gelen verilere göre doldurulup post edildiği kısımdır.
+*/
+
 $settings = new Settings();
 
-
 $request = new BankCardCreateRequest();
-$request->userId = $_POST["userId"];;
+$request->userId = $_POST["userId"];
 $request->cardOwnerName  =$_POST["nameSurname"];;
 $request->cardNumber =$_POST["cardNumber"];
 $request->cardAlias =$_POST["cardAlias"];
