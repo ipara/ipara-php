@@ -11,7 +11,7 @@
 			<label class="col-md-4 control-label" for="binNumber">Bin Numarası</label>
 			<div class="col-md-4">
 				<input id="binNumber" name="binNumber" type="text" placeholder=""
-					value="492130" class="form-control input-md" required="">
+					value="<?php echo ($_POST['binNumber']) ? $_POST['binNumber'] : '545616'; ?>" class="form-control input-md" required="">
 
 			</div>
 		</div>
