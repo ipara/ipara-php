@@ -46,6 +46,7 @@ include ("PaymentInquiryRequest.php");
                    <li><a href="GetCardFromWallet.php">Cüzdandaki Kartları Listele</a></li>
                    <li><a href="DeleteCardFromWallet.php">Cüzdandan Kart Sil</a></li>
                    <li><a href="ApiPaymentWithWallet.php">Cüzdandaki Kart (Tek Tıkla) İle Ödeme</a></li>
+                   <li><a href="PaymentWithLink.php">Link İle Ödeme</a></li>
               
                 </ul>
             </div>
