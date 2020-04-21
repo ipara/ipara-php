@@ -12,6 +12,9 @@ include ("ApiPaymentRequest.php");
 include ("BankCardCreateRequest.php");
 include ("BankCardDeleteRequest.php");
 include ("PaymentInquiryRequest.php");
+include ("LinkPaymentCreateRequest.php");
+include ("LinkPaymentListRequest.php");
+include ("LinkPaymentDeleteRequest.php");
 
 ?>
 
@@ -46,7 +49,9 @@ include ("PaymentInquiryRequest.php");
                    <li><a href="GetCardFromWallet.php">Cüzdandaki Kartları Listele</a></li>
                    <li><a href="DeleteCardFromWallet.php">Cüzdandan Kart Sil</a></li>
                    <li><a href="ApiPaymentWithWallet.php">Cüzdandaki Kart (Tek Tıkla) İle Ödeme</a></li>
-                   <li><a href="PaymentWithLink.php">Link İle Ödeme</a></li>
+                   <li><a href="LinkPaymentCreate.php">Link İle Ödeme (Link Gönderim)</a></li>
+                    <li><a href="LinkPaymentList.php">Link İle Ödeme (Link Sorgulama)</a></li>
+                    <li><a href="LinkPaymentDelete.php">Link İle Ödeme (Link Silme)</a></li>
               
                 </ul>
             </div>
