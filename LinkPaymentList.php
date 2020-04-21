@@ -4,85 +4,65 @@
     <fieldset>
 
         <!-- Form Name -->
-        <legend>Link İle Ödeme (Link Gönderim)</legend>
+        <legend>Link İle Ödeme (Link Sorgulama)</legend>
 
-        <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="">Müşteri Adı * :</label>
+            <label class="col-md-4 control-label" for="">Müşteri Eposta : </label>
             <div class="col-md-4">
-                <input name="name" type="text" value="<?php echo isset($_POST['name']) ? $_POST['name'] : 'Müşteri Ad'; ?>" class="form-control input-md" required="required">
-
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="">Müşteri Soyadı * :</label>
-            <div class="col-md-4">
-                <input name="surname" value="<?php echo isset($_POST['surname']) ? $_POST['surname'] : 'Müşteri Soyad'; ?>" class="form-control input-md" required="required">
+                <input value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" name="email"  class="form-control input-md">
 
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-4 control-label" for="">Müşteri T.C. kimlik Numarası:</label>
+            <label class="col-md-4 control-label" for="">Müşteri Cep Telefonu : </label>
             <div class="col-md-4">
-                <input name="tcCertificate" value="<?php echo isset($_POST['tcCertificate']) ? $_POST['tcCertificate'] : ''; ?>"  class="form-control input-md">
+                <input  value="<?php echo isset($_POST['gsm']) ? $_POST['gsm'] : ''; ?>" name="gsm"  class="form-control input-md">
 
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-4 control-label" for="">Müşteri vergi Numarası: </label>
+            <label class="col-md-4 control-label" for="">Link Durumu : </label>
             <div class="col-md-4">
-                <input  value="<?php echo isset($_POST['taxNumber']) ? $_POST['taxNumber'] : ''; ?>" name="taxNumber"  class="form-control input-md">
-
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="">Müşteri Eposta * : </label>
-            <div class="col-md-4">
-                <input value="<?php echo isset($_POST['email']) ? $_POST['email'] : 'mstfemk@gmail.com'; ?>" name="email"  class="form-control input-md" required="required">
-
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="">Müşteri Cep Telefonu * : </label>
-            <div class="col-md-4">
-                <input  value="<?php echo isset($_POST['gsm']) ? $_POST['gsm'] : '5881231212'; ?>" name="gsm"  class="form-control input-md" required="required">
-
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="">Tahsil Edilecek Tutar * : </label>
-            <div class="col-md-4">
-                <input  value="<?php echo isset($_POST['amount']) ? ($_POST['amount']) : '10'; ?>" name="amount"  class="form-control input-md" required="">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="">3D Secure * : </label>
-            <div class="col-md-4">
-                <select name="threeD" class="form-control">
-                    <option value="true" <?php echo (isset($_POST['threeD']) && $_POST['threeD'] == 'true') ? 'selected' : ''; ?>>Evet</option>
-                    <option value="false" <?php echo (isset($_POST['threeD']) && $_POST['threeD'] == 'false') ? 'selected' : ''; ?>>Hayır</option>
+                <select name="linkState" class="form-control">
+                    <option value="-1" <?php echo (isset($_POST['linkState']) && $_POST['linkState'] == '-1') ? 'selected' : ''; ?>>Seçiniz</option>
+                    <option value="0" <?php echo (isset($_POST['linkState']) && $_POST['linkState'] == '0') ? 'selected' : ''; ?>>Link İsteği Alındı</option>
+                    <option value="1" <?php echo (isset($_POST['linkState']) && $_POST['linkState'] == '1') ? 'selected' : ''; ?>>Link URL’i yaratıldı</option>
+                    <option value="2" <?php echo (isset($_POST['linkState']) && $_POST['linkState'] == '2') ? 'selected' : ''; ?>>Link Gönderildi, Ödeme Bekleniyor</option>
+                    <option value="3" <?php echo (isset($_POST['linkState']) && $_POST['linkState'] == '3') ? 'selected' : ''; ?>>Link ile Ödeme Başarılı</option>
+                    <option value="98" <?php echo (isset($_POST['linkState']) && $_POST['linkState'] == '98') ? 'selected' : ''; ?>>Link Zaman Aşımına Uğradı</option>
+                    <option value="99" <?php echo (isset($_POST['linkState']) && $_POST['linkState'] == '99') ? 'selected' : ''; ?>>Link Silindi</option>
                 </select>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-4 control-label" for="">Link Geçerlilik Süresi (Gün/Ay/Yıl) * : </label>
+            <label class="col-md-4 control-label" for="">Link Oluşturma Alanına Ait Arama Başlangıç Tarihi * : </label>
             <div class="col-md-4 form-inline">
-                <input value="<?php echo isset($_POST['day']) ? $_POST['day'] : date('d'); ?>" name="day" class="form-control input-md" style="width: 80px; text-align: center;" maxlength="2" required="required">
-                <input value="<?php echo isset($_POST['month']) ? $_POST['month'] : date('m'); ?>" name="month" class="form-control input-md" style="width: 80px; text-align: center;" maxlength="2" required="required">
-                <input value="<?php echo isset($_POST['year']) ? $_POST['year'] : date('Y'); ?>" name="year" class="form-control input-md" style="width: 112px; text-align: center;" maxlength="4" required="required">
+                <input value="<?php echo isset($_POST['start_day']) ? $_POST['start_day'] : date('d'); ?>" name="start_day" class="form-control input-md" style="width: 80px; text-align: center;" maxlength="2" required="required">
+                <input value="<?php echo isset($_POST['start_month']) ? $_POST['start_month'] : date('m'); ?>" name="start_month" class="form-control input-md" style="width: 80px; text-align: center;" maxlength="2" required="required">
+                <input value="<?php echo isset($_POST['start_year']) ? $_POST['start_year'] : date('Y'); ?>" name="start_year" class="form-control input-md" style="width: 112px; text-align: center;" maxlength="4" required="required">
 
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-4 control-label" for="">Ödemenin Yapılabileceği Taksitlerin Listesi
-                (Birden çok seçilebilir): </label>
+            <label class="col-md-4 control-label" for="">Link Oluşturma Alanına Ait Arama Başlangıç Tarihi * : </label>
+            <div class="col-md-4 form-inline">
+                <input value="<?php echo isset($_POST['end_day']) ? $_POST['end_day'] : date('d'); ?>" name="end_day" class="form-control input-md" style="width: 80px; text-align: center;" maxlength="2" required="required">
+                <input value="<?php echo isset($_POST['end_month']) ? $_POST['end_month'] : date('m'); ?>" name="end_month" class="form-control input-md" style="width: 80px; text-align: center;" maxlength="2" required="required">
+                <input value="<?php echo isset($_POST['end_year']) ? $_POST['end_year'] : date('Y'); ?>" name="end_year" class="form-control input-md" style="width: 112px; text-align: center;" maxlength="4" required="required">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="">Toplam Gösterilebilecek Sayfa Sayısı * : </label>
             <div class="col-md-4">
-                    <select multiple="multiple" class="form-control" name="installmentList[]">
+                    <select name="pageSize" class="form-control">
                         <?php
-                        for ($installment = 1; $installment <= 12; $installment++) {
+                        $out = '';
+                        for ($page = 5; $page <= 15; $page++) {
                             $out .= "<option ";
-                            $out .= ($_POST['installmentList'] && in_array($installment, $_POST['installmentList'])) ? 'selected' : '';
-                            $out .= ">$installment</option>";
+                            $out .= (isset($_POST['pageSize']) && $_POST['pageSize'] == $page) ? 'selected' : '';
+                            $out .= ">$page</option>";
                         }
                         echo $out;
                         ?>
@@ -91,29 +71,17 @@
         </div>
 
         <div class="form-group">
-            <label class="col-md-4 control-label" for="">Müşteriye Bilgilendirme Mailli Gönder * : </label>
+            <label class="col-md-4 control-label" for="">Gösterilecek Sayfa Numarası * : </label>
             <div class="col-md-4">
-                <select name="sendEmail" class="form-control">
-                    <option value="true" <?php echo (isset($_POST['sendEmail']) && $_POST['sendEmail'] == 'true') ? 'selected' : ''; ?>>Evet</option>
-                    <option value="false" <?php echo (isset($_POST['sendEmail']) && $_POST['sendEmail'] == 'false') ? 'selected' : ''; ?>>Hayır</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="">Komisyon Kime Yansıtılacak * : </label>
-            <div class="col-md-4">
-                <select name="commissionType" class="form-control">
-                    <option value="1" <?php echo (isset($_POST['commissionType']) && $_POST['commissionType'] == '1') ? 'selected' : ''; ?>>Satıcı (Varsayılan)</option>
-                    <option value="2" <?php echo (isset($_POST['commissionType']) && $_POST['commissionType'] == '2') ? 'selected' : ''; ?>>Müşteri</option>
-                </select>
-            </div>
-        </div>
+                <input  value="<?php echo isset($_POST['pageIndex']) ? $_POST['pageIndex'] : '1'; ?>" name="pageIndex"  class="form-control input-md" required="required">
 
+            </div>
+        </div>
         <!-- Button -->
         <div class="form-group">
             <label class="col-md-4 control-label" for=""></label>
             <div class="col-md-4">
-                <button type="submit" id="" name="" class="btn btn-success">Ödeme Linki Oluştur</button>
+                <button type="submit" id="" name="" class="btn btn-success">Ödeme Linklerini Listele</button>
             </div>
         </div>
 
@@ -123,36 +91,24 @@
 
 
 <?php
-//echo "<pre>"; print_r($_POST);
-$yolla = true;
-if (!empty($_POST) && $yolla) {
+
+if (!empty($_POST)) {
     $settings = new Settings();
 
-    /* 002jt0mDrOMHDi+rKIxRFUzww==
-    if ($_POST['installmentList']) {
-        foreach ($_POST['installmentList'] as $installment) {
-            $installmentList[] = $installment;
-        }
-    }
-*/
     $requestData = [
-        "name" => $_POST['name'],
-        "surname" => $_POST['surname'],
-        "tcCertificate" => $_POST['tcCertificate'],
-        "taxNumber" => $_POST['taxNumber'],
         "email" => $_POST['email'],
         "gsm" => $_POST['gsm'],
-        "amount" => $_POST['amount'] * 100,
-        "threeD" => $_POST['threeD'],
-        "expireDate" => date ( "Y-m-d H:i:s", mktime(23, 59, 59, $_POST['month'], $_POST['day'], $_POST['year'])),
-        "installmentList" => isset($_POST['installmentList']) ? $_POST['installmentList'] : null,
-        "sendEmail" => $_POST['sendEmail'],
-        "commissionType" => $_POST['commissionType']
+        "linkState" => ($_POST['linkState'] > -1) ? $_POST['linkState'] : null,
+        "startDate" => date ( "Y-m-d H:i:s", mktime(00, 00, 00, $_POST['start_month'], $_POST['start_day'], $_POST['start_year'])),
+        "endDate" => date ( "Y-m-d H:i:s", mktime(23, 59, 59, $_POST['end_month'], $_POST['end_day'], $_POST['end_year'])),
+        "pageSize" => $_POST['pageSize'],
+        "pageIndex" => $_POST['pageIndex']
     ];
-    //echo "<pre>"; print_r($requestData); die;
-    $linkPaymentRequest = new LinkPaymentCreateRequest($requestData);
+
+    //echo "<h3>Request:</h3> <pre> "; print_r($requestData);
+    $linkPaymentRequest = new LinkPaymentListRequest($requestData);
     $response = $linkPaymentRequest->execute($settings);
-    $output = Helper::formattoJSONOutput($response); //Cüzdana kart eklemesi sonucu oluşan servis çıktı parametrelerini ekrana yazdırmaya olanak sağlayan kısımdır.
+    $output = Helper::formattoJSONOutput($response);
 
     print "<h3>Sonuç:</h3>";
     echo "<pre>";
