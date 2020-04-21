@@ -1,26 +1,14 @@
 <?php
 
-class LinkPaymentListRequest extends  BaseRequest
+class LinkPaymentDeleteRequest extends  BaseRequest
 {
-    // LinkPayment servisi body parametreleri
-    private $email;
-    private $gsm;
-    private $linkState;
-    private $startDate;
-    private $endDate;
-    private $pageSize;
-    private $pageIndex;
+    // LinkPaymentDelete servisi body parametreleri
+    private $linkId;
     private $clientIp;
 
-    public function __construct($requestData)
+    public function __construct($linkId)
     {
-        $this->email = $requestData['email'];
-        $this->gsm = $requestData['gsm'];
-        $this->linkState = $requestData['linkState'];
-        $this->startDate = $requestData['startDate'];
-        $this->endDate = $requestData['endDate'];
-        $this->pageSize = $requestData['pageSize'];
-        $this->pageIndex = $requestData['pageIndex'];
+        $this->linkId = $linkId;
         $this->clientIp = Helper::get_client_ip();
     }
 
@@ -29,19 +17,13 @@ class LinkPaymentListRequest extends  BaseRequest
           $settings->transactionDate = Helper::GetTransactionDateString();
           $settings->HashString = $settings->PrivateKey . $this->clientIp . $settings->transactionDate;
 
-          return  restHttpCaller::post($settings->BaseUrl . "/corporate/merchant/linkpayment/list", Helper::GetHttpHeaders($settings, "application/json"), $this->toJsonString());
+          return  restHttpCaller::post($settings->BaseUrl . "/corporate/merchant/linkpayment/delete", Helper::GetHttpHeaders($settings, "application/json"), $this->toJsonString());
     }
 
     public function toJsonString()
     {
         return json_encode([
-            "email" => $this->email,
-            "gsm" => $this->gsm,
-            "linkState" => $this->linkState,
-            "startDate" => $this->startDate,
-            "endDate" => $this->endDate,
-            "pageSize" => $this->pageSize,
-            "pageIndex" => $this->pageIndex,
+            "linkId" => $this->linkId,
             "clientIp" => $this->clientIp
         ]);
     }
