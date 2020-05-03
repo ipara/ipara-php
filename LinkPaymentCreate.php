@@ -124,9 +124,7 @@
 
 
 <?php
-//echo "<pre>"; print_r($_POST);
-$yolla = true;
-if (!empty($_POST) && $yolla) {
+if (!empty($_POST)) {
     $settings = new Settings();
 
     $requestData = [
@@ -143,7 +141,7 @@ if (!empty($_POST) && $yolla) {
         "sendEmail" => $_POST['sendEmail'],
         "commissionType" => ($_POST['commissionType']) ? $_POST['commissionType'] : null
     ];
-    //echo "<pre>"; print_r($requestData); die;
+
     $linkPaymentRequest = new LinkPaymentCreateRequest($requestData);
     $response = $linkPaymentRequest->execute($settings);
     $output = Helper::formattoJSONOutput($response); //Cüzdana kart eklemesi sonucu oluşan servis çıktı parametrelerini ekrana yazdırmaya olanak sağlayan kısımdır.

@@ -105,7 +105,6 @@ if (!empty($_POST)) {
         "pageIndex" => $_POST['pageIndex']
     ];
 
-    //echo "<h3>Request:</h3> <pre> "; print_r($requestData);
     $linkPaymentRequest = new LinkPaymentListRequest($requestData);
     $response = $linkPaymentRequest->execute($settings);
     $output = Helper::formattoJSONOutput($response);
