@@ -18,12 +18,13 @@ include ("LinkPaymentDeleteRequest.php");
 
 ?>
 
-<html>
+<html lang="tr">
+
     <head>
-          <title>iPara Developer Portal</title>
+        <title>iPara Developer Portal</title>
         <link href="Content/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="Content/Site.css" rel="stylesheet" type="text/css"/>
-        
+        <meta charset="UTF-8">
     </head>
 
     <body>
