@@ -9,7 +9,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="">Müşteri Eposta : </label>
             <div class="col-md-4">
-                <input value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>" name="email"  class="form-control input-md">
+                <input value="<?php echo isset($_POST['email']) ? $_POST['email'] : 'mail@example.com'; ?>" name="email"  class="form-control input-md">
 
             </div>
         </div>
