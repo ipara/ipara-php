@@ -8,6 +8,7 @@ class Helper {
 	
 	*/
 	public static function GetTransactionDateString() {
+		date_default_timezone_set('Europe/Istanbul'); // Web server timezone bilgisinin farklı olduğu durumlarda servisten hata almamak için
 		return date ( "Y-m-d H:i:s" ); // "2017-03-21 16:26:54
 	}
 	
