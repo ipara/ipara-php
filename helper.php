@@ -43,7 +43,7 @@ class Helper {
 		return true;
 	}
 	//Bir çok çağrıda kullanılan HTTP Header bilgilerini otomatik olarak ekleyen fonksiyondur.
-	public static function GetHttpHeaders(Settings $settings, $acceptType, $sessionToken = null) {
+	public static function GetHttpHeaders(Settings $settings, $acceptType) {
 		$header = array (
 				"Accept:" . $acceptType,
 				"Content-type:" . $acceptType,
@@ -52,10 +52,6 @@ class Helper {
 				"transactionDate:" . $settings->transactionDate 
 		);
 
-		if ($sessionToken) {
-			$header['sessionToken'] = $sessionToken;
-		}
-		
 		return $header;
 	}
 	//Guid oluşturmak için kullanılan metottur.
