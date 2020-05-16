@@ -8,6 +8,7 @@ class Helper {
 	
 	*/
 	public static function GetTransactionDateString() {
+		date_default_timezone_set('Europe/Istanbul'); // Web server timezone bilgisinin farklı olduğu durumlarda servisten hata almamak için
 		return date ( "Y-m-d H:i:s" ); // "2017-03-21 16:26:54
 	}
 	
@@ -50,7 +51,7 @@ class Helper {
 				"token:" . Helper::CreateToken ( $settings->PublicKey, $settings->HashString ),
 				"transactionDate:" . $settings->transactionDate 
 		);
-		
+
 		return $header;
 	}
 	//Guid oluşturmak için kullanılan metottur.
@@ -87,7 +88,7 @@ class Helper {
 	 * @return string
 	 */
 	public static function getCurrentUrl() {
-		return $_SERVER ['REQUEST_SCHEME'] . '://' . $_SERVER ['SERVER_NAME'] . ":" . $_SERVER ['SERVER_PORT'];
+		return  (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https" : "http" . '://' . $_SERVER ['SERVER_NAME'] . ":" . $_SERVER ['SERVER_PORT'];
 	}
 	
 	/**
