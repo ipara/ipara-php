@@ -9,6 +9,7 @@ include ("restHttpCaller.php");
 include ("BinNumberInquiryRequest.php");
 include ("BankCardInquiryRequest.php");
 include ("ApiPaymentRequest.php");
+include ("Api3DPaymentRequest.php");
 include ("BankCardCreateRequest.php");
 include ("BankCardDeleteRequest.php");
 include ("PaymentInquiryRequest.php");
@@ -42,17 +43,19 @@ include ("LinkPaymentDeleteRequest.php");
 
                 <img src="Content/iPara_disi-01.png" width="100" height="100" />
                 <ul class="nav navbar-nav">
-                   <li><a href="index.php">3d Ödeme</a></li>
-                   <li><a href="ApiPayment.php">(Non-3d) Ödeme</a></li>
-                   <li><a href="PaymentInquiry.php">Ödeme Sorgulama</a></li>
-                   <li><a href="binInquiry.php">Bin Sorgulama</a></li>
-                   <li><a href="AddCardToWallet.php">Cüzdana Kart Ekle </a></li>
-                   <li><a href="GetCardFromWallet.php">Cüzdandaki Kartları Listele</a></li>
-                   <li><a href="DeleteCardFromWallet.php">Cüzdandan Kart Sil</a></li>
-                   <li><a href="ApiPaymentWithWallet.php">Cüzdandaki Kart (Tek Tıkla) İle Ödeme</a></li>
-                   <li><a href="LinkPaymentCreate.php">Link İle Ödeme (Link Gönderim)</a></li>
+                    <li><a href="index.php">3d Ödeme</a></li>
+                    <li><a href="ApiPayment.php">(Non-3d) Ödeme</a></li>
+                    <li><a href="PaymentInquiry.php">Ödeme Sorgulama</a></li>
+                    <li><a href="binInquiry.php">Bin Sorgulama</a></li>
+                    <li><a href="AddCardToWallet.php">Cüzdana Kart Ekle </a></li>
+                    <li><a href="GetCardFromWallet.php">Cüzdandaki Kartları Listele</a></li>
+                    <li><a href="DeleteCardFromWallet.php">Cüzdandan Kart Sil</a></li>
+                    <li><a href="ApiPaymentWithWallet.php">Cüzdandaki Kart Tek Tıkla Ödeme</a></li>
+                    <li><a href="Api3DPaymentWithWallet.php">Cüzdandaki Kart Tek Tıkla 3D Ödeme</a></li>
+                    <li><a href="LinkPaymentCreate.php">Link İle Ödeme (Link Gönderim)</a></li>
                     <li><a href="LinkPaymentList.php">Link İle Ödeme (Link Sorgulama)</a></li>
                     <li><a href="LinkPaymentDelete.php">Link İle Ödeme (Link Silme)</a></li>
+                    <li><a href="Api3DPayment.php">Tek Adımda 3D Ödeme</a></li>
               
                 </ul>
             </div>
