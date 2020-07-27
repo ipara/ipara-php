@@ -17,14 +17,14 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="">Kart Sahibi Adı Soyadı:</label>
             <div class="col-md-4">
-                <input  value="Fatih Coskun" name="nameSurname" class="form-control input-md" required="">
+                <input  value="Kart Sahibi Ad Soyad" name="nameSurname" class="form-control input-md" required="">
 
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-4 control-label" for="">  Kart Numarası:</label>
             <div class="col-md-4">
-                <input value="4282209027132016" name="cardNumber"  class="form-control input-md" required="">
+                <input value="5456165456165454" name="cardNumber"  class="form-control input-md" required="">
 
             </div>
         </div>
@@ -38,8 +38,8 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="">  Son Kullanma Tarihi Ay/Yıl: </label>
             <div class="col-md-4">
-                <input value="05" name="month"  class="form-control input-md" width="50px" required="">
-                <input value="18" name="year"  class="form-control input-md" width="50px" required="">
+                <input value="12" name="month"  class="form-control input-md" width="50px" required="">
+                <input value="24" name="year"  class="form-control input-md" width="50px" required="">
 
             </div>
         </div>
@@ -49,7 +49,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for=""></label>
             <div class="col-md-4">
-                <button type="submit" id="" name="" class="btn btn-success">Sorgula</button>
+                <button type="submit" id="" name="" class="btn btn-success">Kart Ekle</button>
             </div>
         </div>
 
@@ -58,20 +58,18 @@
 
 
 
-<?php if (!empty($_POST)): ?>
-<?php 
+<?php
+if (!empty($_POST)):
 
-	/*
-	 * Cüzdana kart ekleme servisi için gerekli olan parametrelerin doldurulduğu kısımdır.
-	 * setting ayarlarımızı alıp BankCardCreateRequest alanlarının formdan gelen verilere göre doldurulup post edildiği kısımdır. 
-	*/
-		
-	
+    /*
+ * Cüzdana kart ekleme servisi için gerekli olan parametrelerin doldurulduğu kısımdır.
+ * setting ayarlarımızı alıp BankCardCreateRequest alanlarının formdan gelen verilere göre doldurulup post edildiği kısımdır.
+*/
+
 $settings = new Settings();
 
-
 $request = new BankCardCreateRequest();
-$request->userId = $_POST["userId"];;
+$request->userId = $_POST["userId"];
 $request->cardOwnerName  =$_POST["nameSurname"];;
 $request->cardNumber =$_POST["cardNumber"];
 $request->cardAlias =$_POST["cardAlias"];

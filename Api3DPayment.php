@@ -67,30 +67,56 @@
 		style="font-weight: bold;">Firma Adı:</label> iPara
 </fieldset>
 <form action="" method="post" class="form-horizontal">
-
-
 	<fieldset>
+
+		<!-- Form Name -->
 		<legend>
-			<label style="font-weight: bold; width: 250px;">Tek Tıkla Ödeme</label>
+			<label style="font-weight: bold; width: 250px;">Kart Bilgileriyle
+				Ödeme</label>
 		</legend>
+
+
+		<!-- Text input-->
 		<div class="form-group">
-			<label class="col-md-4 control-label" for="">Kullanıcı Id:</label>
+			<label class="col-md-4 control-label" for="">Kart Sahibi Adı Soyadı:</label>
 			<div class="col-md-4">
-				<input name="userId" type="text" value=""
+				<input value="Kart Sahibi Ad Soyad" name="nameSurname"
 					class="form-control input-md">
 
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-md-4 control-label" for="">Kart Id:</label>
+			<label class="col-md-4 control-label" for=""> Kart Numarası:</label>
 			<div class="col-md-4">
-				<input name="cardId" type="text" value=""
+				<input value="5456165456165454" name="cardNumber"
 					class="form-control input-md">
 
 			</div>
 		</div>
+
+		<div class="form-group">
+			<label class="col-md-4 control-label" for=""> Son Kullanma Tarihi
+				Ay/Yıl: </label>
+			<div class="col-md-4">
+				<input value="12" name="month" class="form-control input-md"
+					width="50px"> <input value="24" name="year"
+					class="form-control input-md" width="50px">
+
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-4 control-label" for=""> CVC: </label>
+			<div class="col-md-4">
+				<input value="000" name="cvc" class="form-control input-md">
+
+			</div>
+		</div>
+
 
 	</fieldset>
+
+
 
 	Taksit Sayısı <select name="installment">
 		<option value="1">1</option>
@@ -118,32 +144,31 @@
 </form>
 
 
-<?php if (!empty($_POST)): ?>
-<?php
+<?php if (!empty($_POST)) {
 
-	/*
-	 *	Cüzdandaki kart ile ödeme servisi
-	 *	setting ayarlarımızı alıp, ApiPaymentRequest alanlarını formdan gelen verilere göre doldurup post edildiği kısımdır.
-	*/
-	
+    /*
+     *3D secure ile ödeme işlemleri için gerekli olan parametrelerin doldurulduğu kısımdır.
+     *setting ayarlarımızı alıp, ApiPaymentRequest alanlarının formdan gelen verilere göre doldurup post edildiği kısımdır.
+     *Post işlemi sonucunda oluşan sonucu ekranda gösteriyoruz.
+    */
+
 	$settings = new Settings ();
 	
-	$request = new ApiPaymentRequest ();
-	$request->OrderId = Helper::Guid ();
+	$request = new Api3DPaymentRequest();
+	$request->OrderId = Helper::Guid();
 	$request->Echo = "Echo";
 	$request->Mode = $settings->Mode;
 	$request->Amount = "10000"; // 100 tL
-	$request->CardOwnerName = "";
-	$request->CardNumber = "";
-	$request->CardExpireMonth = "";
-	$request->CardExpireYear = "";
+	$request->CardOwnerName = $_POST ["nameSurname"];
+	$request->CardNumber = $_POST ["cardNumber"];
+	$request->CardExpireMonth = $_POST ["month"];
+	$request->CardExpireYear = $_POST ["year"];
 	$request->Installment = $_POST ["installment"];
-	$request->Cvc = "";
-	$request->UserId = $_POST ["userId"];
-	$request->CardId = $_POST ["cardId"];
-	
-	$request->ThreeD = "false";
-	
+	$request->Cvc = $_POST ["cvc"];
+    $request->SuccessUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";;
+    $request->FailUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";
+
+
 	// region Sipariş veren bilgileri
 	$request->Purchaser = new Purchaser ();
 	$request->Purchaser->Name = "Murat";
@@ -156,7 +181,6 @@
 	// endregion
 	
 	// region Fatura bilgileri
-	
 	$request->Purchaser->InvoiceAddress = new PurchaserAddress ();
 	$request->Purchaser->InvoiceAddress->Name = "Murat";
 	$request->Purchaser->InvoiceAddress->SurName = "Kaya";
@@ -201,16 +225,8 @@
 	
 	// endregion
 	
-	$response = ApiPaymentRequest::execute ( $request, $settings ); //Cüzdandaki kart ile ödeme servis çağrısını temsil eder.
-	$output = Helper::formattoXMLOutput($response);//Cüzdandaki kart ile ödeme servis çıktı parametrelerini ekranda göstermemize olanak sağlar.
-	
-	print "<h3>Sonuç:</h3>";
-	echo "<pre>";
-	echo htmlspecialchars ($output);
-	echo "</pre>";
-	
-	?>
-    <?php endif; ?>
+    $response = $request->execute3D($settings); // 3D secure ile ödeme yapma servis çağrısının yapıldığı kısımdır.
+    print $response;
+}
 
-
-<?php include('footer.php');?>
+include('footer.php');

@@ -112,23 +112,22 @@
 		<label class="col-md-4 control-label" for=""></label>
 		<div class="col-md-4">
 			<button type="submit" id="" name="" class="btn btn-success">API
-				Payment ile Ödeme</button>
+				3D Payment ile Ödeme</button>
 		</div>
 	</div>
 </form>
 
 
-<?php if (!empty($_POST)): ?>
-<?php
+<?php if (!empty($_POST)) {
 
 	/*
-	 *	Cüzdandaki kart ile ödeme servisi
-	 *	setting ayarlarımızı alıp, ApiPaymentRequest alanlarını formdan gelen verilere göre doldurup post edildiği kısımdır.
+	 *	Cüzdandaki kart ile 3D ödeme servisi
+	 *	setting ayarlarımızı alıp, Api3DPaymentRequest alanlarını formdan gelen verilere göre doldurup post edildiği kısımdır.
 	*/
 	
 	$settings = new Settings ();
 	
-	$request = new ApiPaymentRequest ();
+	$request = new Api3DPaymentRequest();
 	$request->OrderId = Helper::Guid ();
 	$request->Echo = "Echo";
 	$request->Mode = $settings->Mode;
@@ -137,13 +136,14 @@
 	$request->CardNumber = "";
 	$request->CardExpireMonth = "";
 	$request->CardExpireYear = "";
-	$request->Installment = $_POST ["installment"];
 	$request->Cvc = "";
+	$request->Installment = $_POST ["installment"];
 	$request->UserId = $_POST ["userId"];
 	$request->CardId = $_POST ["cardId"];
+    $request->SuccessUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";;
+    $request->FailUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";
 	
-	$request->ThreeD = "false";
-	
+
 	// region Sipariş veren bilgileri
 	$request->Purchaser = new Purchaser ();
 	$request->Purchaser->Name = "Murat";
@@ -200,17 +200,12 @@
 	$request->Products [1] = $p;
 	
 	// endregion
+
+    $response = $request->execute3D($settings); // 3D secure ile ödeme yapma servis çağrısının yapıldığı kısımdır.
+    print $response;
 	
-	$response = ApiPaymentRequest::execute ( $request, $settings ); //Cüzdandaki kart ile ödeme servis çağrısını temsil eder.
-	$output = Helper::formattoXMLOutput($response);//Cüzdandaki kart ile ödeme servis çıktı parametrelerini ekranda göstermemize olanak sağlar.
-	
-	print "<h3>Sonuç:</h3>";
-	echo "<pre>";
-	echo htmlspecialchars ($output);
-	echo "</pre>";
-	
-	?>
-    <?php endif; ?>
+}
 
 
-<?php include('footer.php');?>
+
+include('footer.php');?>

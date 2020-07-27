@@ -1,6 +1,6 @@
 <hr/>
     <footer>
-        <p>&copy; 2017 - iPara</p>
+        <p>&copy; 2020 - iPara</p>
     </footer>
 </div>
 

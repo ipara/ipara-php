@@ -80,7 +80,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="">Kart Sahibi Adı Soyadı:</label>
 			<div class="col-md-4">
-				<input value="Fatih Coskun" name="nameSurname"
+				<input value="Kart Sahibi Ad Soyad" name="nameSurname"
 					class="form-control input-md">
 
 			</div>
@@ -88,7 +88,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for=""> Kart Numarası:</label>
 			<div class="col-md-4">
-				<input value="4282209027132016" name="cardNumber"
+				<input value="5456165456165454" name="cardNumber"
 					class="form-control input-md">
 
 			</div>
@@ -98,8 +98,8 @@
 			<label class="col-md-4 control-label" for=""> Son Kullanma Tarihi
 				Ay/Yıl: </label>
 			<div class="col-md-4">
-				<input value="05" name="month" class="form-control input-md"
-					width="50px"> <input value="18" name="year"
+				<input value="12" name="month" class="form-control input-md"
+					width="50px"> <input value="24" name="year"
 					class="form-control input-md" width="50px">
 
 			</div>

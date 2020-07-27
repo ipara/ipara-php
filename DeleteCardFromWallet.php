@@ -19,7 +19,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for=""> Kart ID (Opsiyonel):</label>
 			<div class="col-md-4">
-				<input value="" name="cardId" class="form-control input-md">
+				<input value="<?php echo ($_POST['cardId']) ? $_POST['cardId'] : ''; ?>" name="cardId" class="form-control input-md">
 
 			</div>
 		</div>
