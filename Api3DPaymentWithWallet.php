@@ -140,8 +140,12 @@
 	$request->Installment = $_POST ["installment"];
 	$request->UserId = $_POST ["userId"];
 	$request->CardId = $_POST ["cardId"];
-    $request->SuccessUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";;
-    $request->FailUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";
+    //$request->SuccessUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";;
+    //$request->FailUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";
+	$request->SuccessUrl = "https://apitest.ipara.com/rest/payment/threed/test/result";
+    $request->FailUrl = "https://apitest.ipara.com/rest/payment/threed/test/result";
+
+	
 	
 
 	// region Sipariş veren bilgileri

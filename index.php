@@ -94,7 +94,7 @@ include ("ThreeDPaymentInitRequest.php");
 		<div class="form-group">
 			<label class="col-md-4 control-label" for=""> Kart Numarası:</label>
 			<div class="col-md-4">
-				<input value="5456165456165454" name="cardNumber"
+				<input value="4662803300111364" name="cardNumber"
 					class="form-control input-md">
 
 			</div>
@@ -104,8 +104,8 @@ include ("ThreeDPaymentInitRequest.php");
 			<label class="col-md-4 control-label" for=""> Son Kullanma Tarihi
 				Ay/Yıl: </label>
 			<div class="col-md-4">
-				<input value="12" name="month" class="form-control input-md"
-					width="50px"> <input value="24" name="year"
+				<input value="10" name="month" class="form-control input-md"
+					width="50px"> <input value="25" name="year"
 					class="form-control input-md" width="50px">
 
 			</div>

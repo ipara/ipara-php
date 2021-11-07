@@ -10,14 +10,11 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="">Sipariş Numarası:</label>
 			<div class="col-md-4">
-				<input name="orderId" type="text" value="58e1e9f22690b"
+				<input name="orderId" type="text" value="64B79163-44EB-4CEC-972A-0776E52F32BA"
 					class="form-control input-md" required="">
 
 			</div>
 		</div>
-
-
-
 		<!-- Button -->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for=""></label>
@@ -42,7 +39,7 @@
 	$request = new PaymentInquiryRequest ();
 	$request->orderId = $_POST ["orderId"];
 	$request->Echo = "Echo";
-	$request->Mode = settings . Mode;
+	$request->Mode = $settings->Mode;
 	$response = PaymentInquiryRequest::execute ( $request, $settings ); // Ödeme sorgulama servisi başlatılması için gerekli servis çağırısını temsil eder.
 	$output = Helper::formattoXMLOutput ( $response ); //Ödeme sorgulama servisi istek çağrısı sonucunda servis çıktı parametrelerinin ekranda gösterildiği kısımdır. 
 	

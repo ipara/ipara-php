@@ -88,7 +88,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for=""> Kart Numarası:</label>
 			<div class="col-md-4">
-				<input value="5456165456165454" name="cardNumber"
+				<input value="4662803300111364" name="cardNumber"
 					class="form-control input-md">
 
 			</div>
@@ -98,8 +98,8 @@
 			<label class="col-md-4 control-label" for=""> Son Kullanma Tarihi
 				Ay/Yıl: </label>
 			<div class="col-md-4">
-				<input value="12" name="month" class="form-control input-md"
-					width="50px"> <input value="24" name="year"
+				<input value="10" name="month" class="form-control input-md"
+					width="50px"> <input value="25" name="year"
 					class="form-control input-md" width="50px">
 
 			</div>
@@ -158,15 +158,17 @@
 	$request->OrderId = Helper::Guid();
 	$request->Echo = "Echo";
 	$request->Mode = $settings->Mode;
-	$request->Amount = "10000"; // 100 tL
+	$request->Amount = "100"; // 100 tL
 	$request->CardOwnerName = $_POST ["nameSurname"];
 	$request->CardNumber = $_POST ["cardNumber"];
 	$request->CardExpireMonth = $_POST ["month"];
 	$request->CardExpireYear = $_POST ["year"];
 	$request->Installment = $_POST ["installment"];
 	$request->Cvc = $_POST ["cvc"];
-    $request->SuccessUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";;
-    $request->FailUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";
+    //$request->SuccessUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";;
+    //$request->FailUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";
+	$request->SuccessUrl = "https://apitest.ipara.com/rest/payment/threed/test/result";
+    $request->FailUrl = "https://apitest.ipara.com/rest/payment/threed/test/result";
 
 
 	// region Sipariş veren bilgileri
