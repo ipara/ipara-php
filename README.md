@@ -66,8 +66,6 @@ Test kartlarımızda alınan hata kodları ve çözümleriyle ilgili detaylı bi
 	$request->CardExpireYear = $_POST ["year"];
 	$request->Installment = $_POST ["installment"];
 	$request->Cvc = $_POST ["cvc"];
-    //$request->SuccessUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";;
-    //$request->FailUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";
 	$request->SuccessUrl = "https://apitest.ipara.com/rest/payment/threed/test/result";
     $request->FailUrl = "https://apitest.ipara.com/rest/payment/threed/test/result";
 
