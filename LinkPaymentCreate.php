@@ -53,6 +53,7 @@
             <label class="col-md-4 control-label" for="">Tahsil Edilecek Tutar (TL) * : </label>
             <div class="col-md-4">
                 <input  value="<?php echo isset($_POST['amount']) ? ($_POST['amount']) : '10'; ?>" name="amount"  class="form-control input-md" required="">
+                <label style="font-weight:normal; font-size:small">*Sipariş tutarı kuruş ayracı olmadan gönderilmelidir. Örneğin; 1 TL 100, 12 1200, 130 13000, 1.05 105, 1.2 120 olarak gönderilmelidir.</label>
             </div>
         </div>
         <div class="form-group">

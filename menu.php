@@ -16,6 +16,8 @@ include ("PaymentInquiryRequest.php");
 include ("LinkPaymentCreateRequest.php");
 include ("LinkPaymentListRequest.php");
 include ("LinkPaymentDeleteRequest.php");
+include("PaymentRefundInquiryRequest.php");
+include("CreatePaymentRefundRequest.php");
 
 ?>
 
@@ -41,9 +43,9 @@ include ("LinkPaymentDeleteRequest.php");
             </div>
             <div class="navbar-collapse collapse">
 
-                <img src="Content/iPara_disi-01.png" width="100" height="100" />
+                <img src="Content/ipara-logo.svg" width="100" height="100" />
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php">3d Ödeme</a></li>
+                    <li><a href="Api3DPayment.php">Tek Adımda 3D Ödeme</a></li>
                     <li><a href="ApiPayment.php">(Non-3d) Ödeme</a></li>
                     <li><a href="PaymentInquiry.php">Ödeme Sorgulama</a></li>
                     <li><a href="binInquiry.php">Bin Sorgulama</a></li>
@@ -55,7 +57,8 @@ include ("LinkPaymentDeleteRequest.php");
                     <li><a href="LinkPaymentCreate.php">Link İle Ödeme (Link Gönderim)</a></li>
                     <li><a href="LinkPaymentList.php">Link İle Ödeme (Link Sorgulama)</a></li>
                     <li><a href="LinkPaymentDelete.php">Link İle Ödeme (Link Silme)</a></li>
-                    <li><a href="Api3DPayment.php">Tek Adımda 3D Ödeme</a></li>
+                    <li><a href="CreatePaymentRefund.php">İade Oluşturma</a></li>
+                    <li><a href="PaymentRefundInqury.php">İade Sorgulama</a></li>
               
                 </ul>
             </div>

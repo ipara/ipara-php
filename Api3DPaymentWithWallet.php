@@ -77,7 +77,7 @@
 			<label class="col-md-4 control-label" for="">Kullanıcı Id:</label>
 			<div class="col-md-4">
 				<input name="userId" type="text" value=""
-					class="form-control input-md">
+					class="form-control input-md" required="">
 
 			</div>
 		</div>
@@ -85,7 +85,7 @@
 			<label class="col-md-4 control-label" for="">Kart Id:</label>
 			<div class="col-md-4">
 				<input name="cardId" type="text" value=""
-					class="form-control input-md">
+					class="form-control input-md" required="">
 
 			</div>
 		</div>
@@ -140,8 +140,12 @@
 	$request->Installment = $_POST ["installment"];
 	$request->UserId = $_POST ["userId"];
 	$request->CardId = $_POST ["cardId"];
-    $request->SuccessUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";;
-    $request->FailUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";
+    //$request->SuccessUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";;
+    //$request->FailUrl = Helper::getCurrentUrl() . "/ipara-php/Api3DPaymentResult.php";
+	$request->SuccessUrl = "https://apitest.ipara.com/rest/payment/threed/test/result";
+    $request->FailUrl = "https://apitest.ipara.com/rest/payment/threed/test/result";
+
+	
 	
 
 	// region Sipariş veren bilgileri

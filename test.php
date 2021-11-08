@@ -22,9 +22,9 @@ $response=BinNumberInquiryRequest::execute($request,$settings);
 print  "Bin Inqury \xA" . $response . "\xA". "\xA";
 
 $request = new PaymentInquiryRequest();
-$request->orderId = orderId;
+$request->orderId = $orderId;
 $request->Echo= "Echo";
-$request->Mode = settings.Mode;
+$request->Mode = $settings->Mode;
 $response=PaymentInquiryRequest::execute($request,$settings);
 print  "PaymentInquiryRequest \xA" . $response . "\xA". "\xA";
 
@@ -63,9 +63,9 @@ $request->Echo = "Echo";
 $request->Mode = $settings->Mode;
 $request->Amount = "10000"; // 100 tL
 $request->CardOwnerName = "Kart Sahibi Ad Soyad";
-$request->CardNumber = "5456165456165454";
-$request->CardExpireMonth = "12";
-$request->CardExpireYear = "24";
+$request->CardNumber = "4662803300111364";
+$request->CardExpireMonth = "10";
+$request->CardExpireYear = "25";
 $request->Installment = "1";
 $request->Cvc = "000";
 $request->ThreeD = "false";

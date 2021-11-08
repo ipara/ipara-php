@@ -3,13 +3,15 @@ class BinNumberInquiryRequest extends  BaseRequest
 {
 	//Bin Sorgulama servisleri içerisinde kullanılacak olan bin numarasını temsil eder.
     public $binNumber;
+    public $amount;
+    public $threeD ="true";
    
    // Türkiye genelinde tanımlı olan tüm yerli kartlara ait BIN numaraları için sorgulama yapılmasına izin veren servisi temsil eder. 
     public static function execute(BinNumberInquiryRequest $request, Settings $settings)
     {
         $settings->transactionDate = Helper::GetTransactionDateString();
           $settings->HashString = $settings->PrivateKey . $request->binNumber . $settings->transactionDate;  
-          return restHttpCaller::post($settings->BaseUrl . "rest/payment/bin/lookup", Helper::GetHttpHeaders($settings, "application/json"), $request->toJsonString());
+          return restHttpCaller::post($settings->BaseUrl . "rest/payment/bin/lookup/v2", Helper::GetHttpHeaders($settings, "application/json"), $request->toJsonString());
 
         }
 
@@ -19,7 +21,11 @@ class BinNumberInquiryRequest extends  BaseRequest
     public function toJsonString()
     {
         
-        return json_encode(array("binNumber"=>$this->binNumber));
+        return json_encode(array(
+            "binNumber"=>$this->binNumber,
+            "amount"=>$this->amount,
+            "threeD"=>$this->threeD
+            ));
     }
 
 }

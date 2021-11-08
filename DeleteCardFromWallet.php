@@ -27,7 +27,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for=""></label>
 			<div class="col-md-4">
-				<button type="submit" id="" name="" class="btn btn-success">Sorgula</button>
+				<button type="submit" id="" name="" class="btn btn-success">Kart Sil</button>
 			</div>
 		</div>
 
