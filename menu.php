@@ -43,7 +43,7 @@ include("CreatePaymentRefundRequest.php");
             </div>
             <div class="navbar-collapse collapse">
 
-                <img src="Content/iPara_disi-01.png" width="100" height="100" />
+                <img src="Content/ipara-logo.svg" width="100" height="100" />
                 <ul class="nav navbar-nav">
                     <li><a href="Api3DPayment.php">Tek Adımda 3D Ödeme</a></li>
                     <li><a href="ApiPayment.php">(Non-3d) Ödeme</a></li>

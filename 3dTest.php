@@ -6,19 +6,19 @@ include ("settings.php");
 include ("helper.php");
 include ("base.php");
 include ("restHttpCaller.php");
-include ("ThreeDPaymentInitRequest.php");
+include ("Api3DPaymentRequest.php");
 include ("ThreeDPaymentCompleteRequest.php");
 
 $settings = new Settings ();
 
 $settings->PublicKey = ""; // "Public Magaza Anahtarı",
 $settings->PrivateKey = ""; // "Private Magaza Anahtarı",
-$settings->BaseUrl = "https://www.ipara.com/3dgate";
+$settings->BaseUrl = "https://www.ipara.com/rest/payment/threed";
 $settings->Version = "1.0";
 $settings->Mode = "T"; // Test -> T / Prod -> P
 $settings->HashString = "";
 
-$request = new ThreeDPaymentInitRequest ();
+$request = new Api3DPaymentRequest ();
 $request->OrderId = Helper::Guid ();
 $request->Echo = "Echo";
 $request->Mode = $settings->Mode;
@@ -39,7 +39,7 @@ $request->PurchaserEmail = "murat@kaya.com";
 $request->SuccessUrl = helper::getCurrentUrl() . "/success.php";
 $request->FailUrl = helper::getCurrentUrl() . "/fail.php";
 
-$response = ThreeDPaymentInitRequest::execute ( $request, $settings );
+$response = Api3DPaymentRequest::execute ( $request, $settings );
 print $response;
 ?>
 
