@@ -79,6 +79,7 @@ class Api3DPaymentRequest extends ApiPaymentRequest
             "installment" => $this->Installment,
             "amount" => $this->Amount,
             "echo" => $this->Echo,
+            "vendorId" => $this->VendorId,
             "successUrl" => $this->SuccessUrl,
             "failureUrl" => $this->FailUrl,
             "transactionDate" => $settings->transactionDate,
