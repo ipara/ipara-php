@@ -11,6 +11,8 @@ class LinkPaymentListRequest extends  BaseRequest
     private $pageSize;
     private $pageIndex;
     private $clientIp;
+    private $linkId;
+
 
     public function __construct($requestData)
     {
@@ -19,9 +21,11 @@ class LinkPaymentListRequest extends  BaseRequest
         $this->linkState = $requestData['linkState'];
         $this->startDate = $requestData['startDate'];
         $this->endDate = $requestData['endDate'];
+        $this->linkId = $requestData['linkId'];
         $this->pageSize = $requestData['pageSize'];
         $this->pageIndex = $requestData['pageIndex'];
         $this->clientIp = Helper::get_client_ip();
+
     }
 
     public function execute(Settings $settings)
@@ -40,6 +44,7 @@ class LinkPaymentListRequest extends  BaseRequest
             "linkState" => $this->linkState,
             "startDate" => $this->startDate,
             "endDate" => $this->endDate,
+            "linkId" => $this->linkId,
             "pageSize" => $this->pageSize,
             "pageIndex" => $this->pageIndex,
             "clientIp" => $this->clientIp

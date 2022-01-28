@@ -54,6 +54,13 @@
         </div>
 
         <div class="form-group">
+            <label class="col-md-4 control-label" for="">Ödeme Linki ID : </label>
+            <div class="col-md-4">
+                <input value="<?php echo isset($_POST['linkId']) ? $_POST['linkId'] : null; ?>" name="linkId"  class="form-control input-md">
+
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-md-4 control-label" for="">Toplam Gösterilebilecek Sayfa Sayısı * : </label>
             <div class="col-md-4">
                     <select name="pageSize" class="form-control">
