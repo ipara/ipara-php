@@ -7,6 +7,7 @@ include ("helper.php");
 include ("base.php");
 include ("restHttpCaller.php");
 include ("BinNumberInquiryRequest.php");
+include ("BinNumberInquiryRequestV4.php");
 include ("BankCardInquiryRequest.php");
 include ("ApiPaymentRequest.php");
 include ("Api3DPaymentRequest.php");
@@ -18,6 +19,7 @@ include ("LinkPaymentListRequest.php");
 include ("LinkPaymentDeleteRequest.php");
 include("PaymentRefundInquiryRequest.php");
 include("CreatePaymentRefundRequest.php");
+include("CheckoutFormRequest.php");
 
 ?>
 
@@ -49,6 +51,7 @@ include("CreatePaymentRefundRequest.php");
                     <li><a href="ApiPayment.php">(Non-3d) Ödeme</a></li>
                     <li><a href="PaymentInquiry.php">Ödeme Sorgulama</a></li>
                     <li><a href="binInquiry.php">Bin Sorgulama</a></li>
+                    <li><a href="binInquiryV4.php">Bin Sorgulama V4</a></li>
                     <li><a href="AddCardToWallet.php">Cüzdana Kart Ekle </a></li>
                     <li><a href="GetCardFromWallet.php">Cüzdandaki Kartları Listele</a></li>
                     <li><a href="DeleteCardFromWallet.php">Cüzdandan Kart Sil</a></li>
@@ -59,7 +62,7 @@ include("CreatePaymentRefundRequest.php");
                     <li><a href="LinkPaymentDelete.php">Link İle Ödeme (Link Silme)</a></li>
                     <li><a href="CreatePaymentRefund.php">İade Oluşturma</a></li>
                     <li><a href="PaymentRefundInqury.php">İade Sorgulama</a></li>
-              
+                    <li><a href="CheckoutFormCreate.php">Checkout From Oluşturma</a></li>
                 </ul>
             </div>
         </div>
